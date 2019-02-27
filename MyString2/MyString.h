@@ -1,3 +1,30 @@
 #pragma once
+#include <iostream>
+using namespace std;
+class MyString;
 
-// MyString class declaration goes here
+ostream &operator<<(ostream & strm, const MyString & obj);
+
+class MyString
+{
+private:
+	char* ptr;
+public:
+	//default constructor
+	MyString();
+	//parameter constructor
+	MyString(char*);
+	//copy constructor
+	MyString(MyString&);
+	//a destructor
+	~MyString();
+	//assignment operator
+	void operator=(MyString other);
+	//addition operator
+	MyString operator+(MyString other);
+	//comparison == operator
+	bool operator==(MyString other);
+	//getter cstring ptr
+	char* getcstringptr() const;
+};
+
