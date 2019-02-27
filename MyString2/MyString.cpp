@@ -10,39 +10,34 @@ MyString::MyString()
 MyString::MyString(char* a)
 {
 	ptr = new char[strlen(a) + 1];
-	/*for (int i = 0; i < (strlen(a) + 1); i++)
-	{
-		ptr[i] = a[i];
-	}*/
 	strcpy_s(ptr, (strlen(a) + 1), a);
 }
 MyString::MyString(MyString& other)
 {
 	ptr = new char[strlen(other.ptr) + 1];
-	/*for (int i = 0; i < (strlen(other.ptr) + 1); i++)
-	{
-		ptr[i] = other.ptr[i];
-	}*/
 	strcpy_s(ptr, (strlen(other.ptr) + 1), other.ptr);
 }
 MyString::~MyString()
 {
 	delete[] ptr;
 }
-void MyString::operator=(MyString other)
+MyString MyString::operator=(MyString other)
 {
-	delete[] ptr;
-	ptr = new char[strlen(other.ptr) + 1];
-	/*for (int i = 0; i < (strlen(other.ptr) + 1); i++)
+	if (this != &other)
 	{
-		ptr[i] = other.ptr[i];
-	}*/
-	strcpy_s(ptr, (strlen(other.ptr) + 1), other.ptr);
+		delete[] ptr;
+		ptr = new char[strlen(other.ptr) + 1];
+		strcpy_s(ptr, (strlen(other.ptr) + 1), other.ptr);
+	}
+	return *this;
 }
 MyString MyString::operator+(MyString other)
 {
-	MyString a; //testing purposes
-	return a;//testing purposes
+	MyString a;
+	a.ptr = new char[strlen(ptr) + strlen(other.ptr) + 1];
+	strcpy_s(a.ptr, (strlen(ptr) + strlen(other.ptr) + 1), ptr);
+	strcat_s(a.ptr, (strlen(ptr) + strlen(other.ptr) + 1), other.ptr);
+	return a;
 }
 bool MyString::operator==(MyString other)
 {

@@ -5,12 +5,16 @@ using namespace std;
 int main()
 {
 	char lol[] = "hello";
-	MyString a;
-	cout << a << endl;
-	MyString b(lol);
+	MyString a(lol);
+	cout << lol;
+	MyString b(a);
 	cout << b;
-	a = b;
-	cout << a;
+	char meow[] = "meow";
+	MyString c(meow);
+	cout << endl;
+	cout << a + c << endl;
+	
+
 
 
 

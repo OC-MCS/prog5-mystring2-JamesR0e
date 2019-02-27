@@ -19,7 +19,7 @@ public:
 	//a destructor
 	~MyString();
 	//assignment operator
-	void operator=(MyString other);
+	MyString operator=(MyString other);
 	//addition operator
 	MyString operator+(MyString other);
 	//comparison == operator
