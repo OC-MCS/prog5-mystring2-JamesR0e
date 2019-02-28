@@ -16,7 +16,7 @@ public:
 	MyString(const char*);
 	//copy constructor
 	MyString(MyString&);
-	//a destructor
+	//destructor
 	~MyString();
 	//assignment operator
 	MyString operator=(const MyString & other);

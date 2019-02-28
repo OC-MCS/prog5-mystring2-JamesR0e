@@ -44,6 +44,14 @@ int main()
 	{
 		cout << "Comparison Worked!" << endl;
 	}
+	if (a == b) //should return false
+	{
+		cout << "oof" << endl;
+	}
+	else
+	{
+		cout << "Comparison Worked!" << endl;
+	}
 
 	//Testing multiple assignment
 	a = b = c;
@@ -62,10 +70,13 @@ int main()
 	MyString i;
 	MyString j;
 	h = i + j;
-	cout << "output h: " << h << endl; //output should be nothing
+	cout << "output h: " << h << endl; //output should be blank
 	if (i == j) //should return true
 	{
 		cout << "Comparison Worked!" << endl;
 	}
+	char yo[] = "\0";
+	MyString k(yo);
+	cout << "output k: " << k << endl; //output should be blank
 	return 0;
 }

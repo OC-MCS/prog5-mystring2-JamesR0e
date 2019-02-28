@@ -59,11 +59,18 @@ MyString::~MyString()
 //====================================================== 
 MyString MyString::operator=(const MyString & other)
 {
-	if (this != &other)
+	if (other.ptr != nullptr)
 	{
-		delete[] ptr;
-		ptr = new char[strlen(other.ptr) + 1];
-		strcpy_s(ptr, (strlen(other.ptr) + 1), other.ptr);
+		if (this != &other)
+		{
+			delete[] ptr;
+			ptr = new char[strlen(other.ptr) + 1];
+			strcpy_s(ptr, (strlen(other.ptr) + 1), other.ptr);
+		}
+	}
+	else
+	{
+		ptr = nullptr;
 	}
 	return *this;
 }
@@ -76,7 +83,11 @@ MyString MyString::operator=(const MyString & other)
 MyString MyString::operator+(const MyString & other)
 {
 	MyString a;
-	if (ptr == nullptr)
+	if (ptr == nullptr && other.ptr == nullptr)
+	{
+	a.ptr == '\0';
+	}
+	else if (ptr == nullptr)
 	{
 		a.ptr = new char[strlen(other.ptr) + 1];
 		strcpy_s(a.ptr, (strlen(other.ptr) + 1), other.ptr);
@@ -85,10 +96,6 @@ MyString MyString::operator+(const MyString & other)
 	{
 		a.ptr = new char[strlen(ptr) + 1];
 		strcpy_s(a.ptr, (strlen(ptr) + 1), ptr);
-	}
-	else if (ptr == nullptr && other.ptr == nullptr)
-	{
-		a.ptr == '\0';
 	}
 	else
 	{
@@ -113,7 +120,7 @@ bool MyString::operator==(const MyString & other)
 	}
 	else
 	{
-		isequal = strcmp(ptr, other.ptr);
+		isequal = !strcmp(ptr, other.ptr);
 	}
 	return isequal;
 }
