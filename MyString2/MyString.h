@@ -13,17 +13,17 @@ public:
 	//default constructor
 	MyString();
 	//parameter constructor
-	MyString(char*);
+	MyString(const char*);
 	//copy constructor
 	MyString(MyString&);
 	//a destructor
 	~MyString();
 	//assignment operator
-	MyString operator=(MyString other);
+	MyString operator=(const MyString & other);
 	//addition operator
-	MyString operator+(MyString other);
+	MyString operator+(const MyString & other);
 	//comparison == operator
-	bool operator==(MyString other);
+	bool operator==(const MyString & other);
 	//getter cstring ptr
 	char* getcstringptr() const;
 };
